@@ -35,29 +35,29 @@ AsyncWebServer server(80);      //Cria os objetos dos servidores
 DNSServer dns;
 
 // Tópicos do Subscribe
-const char * sub0 = "ESP32/SeuTópico/Subscribe/Ligar-DesligarTudo/Comando"; // Somente por MQTT
-const char * sub1 = "ESP32/SeuTópico/Subscribe/Interruptor1/Comando";       // Ligados ao Nora/MQTT
-const char * sub2 = "ESP32/SeuTópico/Subscribe/Interruptor2/Comando";       // Ligados ao Nora/MQTT
-const char * sub3 = "ESP32/SeuTópico/Subscribe/Interruptor3/Comando";       // Ligados ao Nora/MQTT
-const char * sub4 = "ESP32/SeuTópico/Subscribe/Interruptor4/Comando";       // Ligados ao Nora/MQTT
-const char * sub5 = "ESP32/SeuTópico/Subscribe/Interruptor5/Comando";       // Ligados ao Nora/MQTT
-const char * sub6 = "ESP32/SeuTópico/Subscribe/Interruptor6/Comando";       // Ligados ao MQTT/Alexa
-const char * sub7 = "ESP32/SeuTópico/Subscribe/Interruptor7/Comando";       // Ligados ao MQTT/Alexa
-const char * sub8 = "ESP32/SeuTópico/Subscribe/Interruptor8/Comando";       // Ligados ao MQTT/Alexa
+const char * sub0 = "ESP32/SeuTópico-Subscribe/Ligar-DesligarTudo/Comando"; // Somente por MQTT
+const char * sub1 = "ESP32/SeuTópico-Subscribe/Interruptor1/Comando";       // Ligados ao Nora/MQTT
+const char * sub2 = "ESP32/SeuTópico-Subscribe/Interruptor2/Comando";       // Ligados ao Nora/MQTT
+const char * sub3 = "ESP32/SeuTópico-Subscribe/Interruptor3/Comando";       // Ligados ao Nora/MQTT
+const char * sub4 = "ESP32/SeuTópico-Subscribe/Interruptor4/Comando";       // Ligados ao Nora/MQTT
+const char * sub5 = "ESP32/SeuTópico-Subscribe/Interruptor5/Comando";       // Ligados ao Nora/MQTT
+const char * sub6 = "ESP32/SeuTópico-Subscribe/Interruptor6/Comando";       // Ligados ao MQTT/Alexa
+const char * sub7 = "ESP32/SeuTópico-Subscribe/Interruptor7/Comando";       // Ligados ao MQTT/Alexa
+const char * sub8 = "ESP32/SeuTópico-Subscribe/Interruptor8/Comando";       // Ligados ao MQTT/Alexa
 
 // Tópicos do Publish
-const char * pub0 = "ESP32/SeuTópico/Publish/Ligar-DesligarTudo/Estado";  // Somente por MQTT
-const char * pub1 = "ESP32/SeuTópico/Publish/Interruptor1/Estado";        // Ligados ao Nora/MQTT
-const char * pub2 = "ESP32/SeuTópico/Publish/Interruptor2/Estado";        // Ligados ao Nora/MQTT
-const char * pub3 = "ESP32/SeuTópico/Publish/Interruptor3/Estado";        // Ligados ao Nora/MQTT
-const char * pub4 = "ESP32/SeuTópico/Publish/Interruptor4/Estado";        // Ligados ao Nora/MQTT
-const char * pub5 = "ESP32/SeuTópico/Publish/Interruptor5/Estado";        // Ligados ao Nora/MQTT
-const char * pub6 = "ESP32/SeuTópico/Publish/Interruptor6/Estado";        // Ligados ao MQTT/Alexa
-const char * pub7 = "ESP32/SeuTópico/Publish/Interruptor7/Estado";        // Ligados ao MQTT/Alexa
-const char * pub8 = "ESP32/SeuTópico/Publish/Interruptor8/Estado";        // Ligados ao MQTT/Alexa
-const char * pub9 = "ESP32/SeuTópico/Publish/Temperatura";                // Somente por MQTT
-const char * pub10 = "ESP32/SeuTópico/Publish/Umidade";                   // Somente por MQTT
-const char * pub11 = "ESP32/SeuTópico/Publish/SensacaoTermica";           // Somente por MQTT
+const char * pub0 = "ESP32/SeuTópico-Publish/Ligar-DesligarTudo/Estado";  // Somente por MQTT
+const char * pub1 = "ESP32/SeuTópico-Publish/Interruptor1/Estado";        // Ligados ao Nora/MQTT
+const char * pub2 = "ESP32/SeuTópico-Publish/Interruptor2/Estado";        // Ligados ao Nora/MQTT
+const char * pub3 = "ESP32/SeuTópico-Publish/Interruptor3/Estado";        // Ligados ao Nora/MQTT
+const char * pub4 = "ESP32/SeuTópico-Publish/Interruptor4/Estado";        // Ligados ao Nora/MQTT
+const char * pub5 = "ESP32/SeuTópico-Publish/Interruptor5/Estado";        // Ligados ao Nora/MQTT
+const char * pub6 = "ESP32/SeuTópico-Publish/Interruptor6/Estado";        // Ligados ao MQTT/Alexa
+const char * pub7 = "ESP32/SeuTópico-Publish/Interruptor7/Estado";        // Ligados ao MQTT/Alexa
+const char * pub8 = "ESP32/SeuTópico-Publish/Interruptor8/Estado";        // Ligados ao MQTT/Alexa
+const char * pub9 = "ESP32/SeuTópico-Publish/Temperatura";                // Somente por MQTT
+const char * pub10 = "ESP32/SeuTópico-Publish/Umidade";                   // Somente por MQTT
+const char * pub11 = "ESP32/SeuTópico-Publish/SensacaoTermica";           // Somente por MQTT
 
 //Tópicos do Sensor de Movimento
 const char * motion_topic = "ESP32/SeuTópico/Motion";             // Somente por MQTT
