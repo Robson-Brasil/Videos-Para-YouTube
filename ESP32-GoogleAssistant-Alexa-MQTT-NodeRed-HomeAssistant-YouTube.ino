@@ -2,28 +2,37 @@
 IoT - Automação Residencial
 Autor : Robson Brasil
 Dispositivo : ESP32 WROOM32
-Preferences--> Aditional boards Manager URLs : 
-http://arduino.esp8266.com/stable/package_esp8266com_index.json,https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
-Download Board ESP32 (2.0.3): 
+Preferences--> Aditional boards Manager URLs: 
+                                   http://arduino.esp8266.com/stable/package_esp8266com_index.json,https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+Download Board ESP32 (2.0.3):
+WiFi Manager
 Broker MQTT
-Node-Red / Google Assistant-Nora https://smart-nora.eu/ / Alexa-SirincPro https://portal.sinric.pro/
-Para Instalação do Node-Red : https://nodered.org/docs/getting-started/
+Node-Red / Google Assistant-Nora:  https://smart-nora.eu/  
+Alexa-SirincPro:                   https://portal.sinric.pro/
+Para Instalação do Node-Red:       https://nodered.org/docs/getting-started/
 Home Assistant
-Para Instalação do Home Assistant : https://www.home-assistant.io/installation/
+Para Instalação do Home Assistant: https://www.home-assistant.io/installation/
 Versão : 0
-Última Modificação : xx/xx/2022
+Última Modificação : xx/xx/xxxx
 **********************************************************************************/
 
 // Bibliotecas
-#include <WiFi.h>         // Importa a Biblioteca WiFi
-#include <PubSubClient.h> // Importa a Biblioteca PubSubClient
-#include <DHT.h>          // Importa a Biblioteca DHT
-#include <WiFiUdp.h>      // Importa a Biblioteca WiFiUdp
-#include <esp_task_wdt.h> // Importa a Biblioteca do WatchDog
-#include <Arduino.h>      // ArduinoJson Library: https://github.com/bblanchon/ArduinoJson
-#include "SinricPro.h"    // SinricPro Library: https://sinricpro.github.io/esp8266-esp32-sdk/
-#include "SinricProSwitch.h"
+#include <WiFi.h>               // Importa a Biblioteca WiFi
+#include <PubSubClient.h>       // Importa a Biblioteca PubSubClient
+#include <DHT.h>                // Importa a Biblioteca DHT
+#include <WiFiUdp.h>            // Importa a Biblioteca WiFiUdp
+#include <esp_task_wdt.h>       // Importa a Biblioteca do WatchDog
+#include <Arduino.h>            // ArduinoJson Library:        https://github.com/bblanchon/ArduinoJson
+#include "SinricPro.h"          // SinricPro Library:          https://sinricpro.github.io/esp8266-esp32-sdk/
+#include "SinricProSwitch.h"    // SinricPro Library:          https://sinricpro.github.io/esp8266-esp32-sdk/
 #include <map>
+#include <DNSServer.h>          // DNSServer Library:          https://github.com/zhouhan0126/DNSServer---esp32
+#include <ESPAsyncWebServer.h>  //ESPAsyncWebServer Library:   https://github.com/me-no-dev/ESPAsyncWebServer
+#include <ESPAsyncWiFiManager.h>//ESPAsyncWiFiManager Library: https://github.com/alanswx/ESPAsyncWiFiManager
+
+//Wi-Fi Manager
+AsyncWebServer server(80);      //Cria os objetos dos servidores
+DNSServer dns;
 
 // Tópicos do Subscribe
 const char * sub0 = "ESP32/SeuTópico/Subscribe/Ligar-DesligarTudo/Comando"; // Somente por MQTT
@@ -117,10 +126,9 @@ const char * mqttPwd      = "Senha do Broker MQTT";         // MQTT Password
 int BROKER_PORT           = 1883;               // Porta do Broker MQTT
 
 // IP Estático
-IPAddress staticIP(192, 168, 15, 50); //Altere aqui para por o seu IP
-IPAddress gateway(192, 168, 15, 1);
+IPAddress staticIP(192, 168, xx, xx); //Altere aqui para por o seu IP
+IPAddress gateway(192, 168, xx, xx);
 IPAddress subnet(255, 255, 255, 0);
-IPAddress dns(192, 168, 15, 1);
 
 typedef struct {      // struct for the std::map below
     int relayPIN;
@@ -286,6 +294,11 @@ void setup()
     setupRelays();
     setupFlipSwitches();
     setupSinricPro();
+
+//Configuração do Wi-Fi Manager
+AsyncWiFiManager manager(&server, &dns);     //Cria os objetos dos servidores
+manager.resetSettings();                     //Reseta as configurações do gerenciador
+manager.autoConnect("ESP32 - Access Point"); //Cria o ponto de acesso
 
 // WatchDog
 // hw_timer_t * timerBegin(uint8_t num, uint16_t divider, bool countUp)
@@ -596,7 +609,7 @@ Caso contrário, são efetuadas tentativas de conexão*/
 
     WiFi.begin(SSID, PASSWORD); // Conecta na rede WI-FI
     Serial.println("\nConectando WiFi " + String(SSID));
-    if (WiFi.config(staticIP, gateway, subnet, dns, dns) == false)
+    if (WiFi.config(staticIP, gateway, subnet) == false)
     {
     Serial.println("Configuração Falhou");
       }
