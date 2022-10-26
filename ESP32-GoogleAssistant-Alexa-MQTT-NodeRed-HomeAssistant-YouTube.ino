@@ -130,6 +130,9 @@ IPAddress staticIP(192, 168, xx, xx); //Altere aqui para por o seu IP
 IPAddress gateway(192, 168, xx, xx);
 IPAddress subnet(255, 255, 255, 0);
 
+IPAddress primaryDNS(8, 8, 8, 8);
+IPAddress secondaryDNS(8, 8, 4, 4);
+
 typedef struct {      // struct for the std::map below
     int relayPIN;
     int flipSwitchPIN;
@@ -609,7 +612,7 @@ Caso contrário, são efetuadas tentativas de conexão*/
 
     WiFi.begin(SSID, PASSWORD); // Conecta na rede WI-FI
     Serial.println("\nConectando WiFi " + String(SSID));
-    if (WiFi.config(staticIP, gateway, subnet) == false)
+    if (!WiFi.config(local_IP, gateway, subnet, primaryDNS, secondaryDNS))
     {
     Serial.println("Configuração Falhou");
       }
