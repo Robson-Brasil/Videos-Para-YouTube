@@ -125,7 +125,7 @@ int value = 0;
 
 //WebServer
 const char* http_username = "Robson Brasil";
-const char* http_password = "@Lobo#Alfa@";
+const char* http_password = "loboalfa";
 const char* PARAM_INPUT_1 = "output";
 const char* PARAM_INPUT_2 = "state";
 
